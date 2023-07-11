@@ -1,18 +1,9 @@
 package com.example.virginmoneychallenge.data
 
 import com.example.virginmoneychallenge.data.local.People
-import com.example.virginmoneychallenge.data.remote.APIService
-import javax.inject.Inject
+import com.example.virginmoneychallenge.data.local.Room
 
-class ChallengeRepo @Inject constructor(private val service: APIService) {
-
-    suspend fun getPeople(): List<People> {
-        val peopleDTOs = service.getPeople()
-        return peopleDTOs.map {
-            People(
-                firstName = it.firstName!!,
-                lastName = it.lastName!!
-            )
-        }
-    }
+interface ChallengeRepo {
+    suspend fun getPeople(): List<People>
+    suspend fun getRooms(): List<Room>
 }

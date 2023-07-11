@@ -10,8 +10,6 @@ data class PeopleDTO(
     val avatar: String?,
     @SerialName("createdAt")
     val createdAt: String?,
-    @SerialName("data")
-    val data: DataDTO?,
     @SerialName("email")
     val email: String?,
     @SerialName("favouriteColor")

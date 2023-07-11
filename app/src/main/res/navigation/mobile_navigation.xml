@@ -3,18 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_people">
+    app:startDestination="@id/navigation_login">
 
     <fragment
         android:id="@+id/navigation_people"
         android:name="com.example.virginmoneychallenge.ui.people.PeopleFragment"
         android:label="@string/title_people"
-        tools:layout="@layout/fragment_people" />
+        tools:layout="@layout/fragment_people">
+        <action
+            android:id="@+id/action_navigation_people_to_peopleDetailFragment"
+            app:destination="@id/peopleDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_rooms"
         android:name="com.example.virginmoneychallenge.ui.rooms.RoomsFragment"
         android:label="@string/title_rooms"
         tools:layout="@layout/fragment_rooms" />
+    <fragment
+        android:id="@+id/peopleDetailFragment"
+        android:name="com.example.virginmoneychallenge.ui.people.PeopleDetailFragment"
+        android:label="PeopleDetailFragment" />
+
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.example.virginmoneychallenge.ui.login.LoginFragment"
+        android:label="LoginFragment">
+        <action
+            android:id="@+id/action_loginFragment_to_navigation_people"
+            app:destination="@id/navigation_people" />
+    </fragment>
 
 </navigation>

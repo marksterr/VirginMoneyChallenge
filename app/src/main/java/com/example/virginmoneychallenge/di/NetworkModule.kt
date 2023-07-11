@@ -1,5 +1,6 @@
-package com.example.virginmoneychallenge.data.remote
+package com.example.virginmoneychallenge.di
 
+import com.example.virginmoneychallenge.data.remote.APIService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides

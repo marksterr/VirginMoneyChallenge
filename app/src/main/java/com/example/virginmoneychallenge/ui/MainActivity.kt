@@ -1,6 +1,8 @@
 package com.example.virginmoneychallenge.ui
 
 import android.os.Bundle
+import android.util.TypedValue
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -34,5 +36,27 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // Hide navbar while loin screen is in view
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.navigation_login -> {
+                    navView.visibility = View.GONE
+                    binding.container.setPadding(0, 0, 0, 0) // remove padding
+                }
+                else -> {
+                    navView.visibility = View.VISIBLE
+                    val paddingTop = TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP,
+                        TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_PX,
+                            TypedValue.COMPLEX_UNIT_DIP.toFloat(),
+                            resources.displayMetrics).toInt().toFloat(),
+                        resources.displayMetrics
+                    )
+                    binding.container.setPadding(0, paddingTop.toInt(), 0, 0) // add padding
+                }
+            }
+        }
     }
 }
